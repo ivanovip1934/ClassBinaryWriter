@@ -38,7 +38,7 @@ namespace ClassBinaryWriter
                 Console.Write("{0:x2} ", b);
             Console.WriteLine(" - {0} bytes", dataWritten.Length);
 
-            Console.ReadKey();
+            
 
 
             // Класс BinaryReader
