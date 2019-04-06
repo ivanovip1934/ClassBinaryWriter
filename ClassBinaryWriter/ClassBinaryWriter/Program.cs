@@ -19,6 +19,8 @@ namespace ClassBinaryWriter
 
             string pathToBinaryData = "c:\\programs\\binarydata.dat";
 
+            // Класс BinaryWriter
+
             using (FileStream output = File.Create(pathToBinaryData))
             {
                 using (BinaryWriter writer = new BinaryWriter(output))
@@ -36,7 +38,28 @@ namespace ClassBinaryWriter
                 Console.Write("{0:x2} ", b);
             Console.WriteLine(" - {0} bytes", dataWritten.Length);
 
-            Console.ReadKey();          
+            Console.ReadKey();
+
+
+            // Класс BinaryReader
+            using (FileStream input = File.OpenRead(pathToBinaryData)) {
+                using (BinaryReader reader = new BinaryReader(input)) {
+                    int intRead = reader.ReadInt32();
+                    string stringRead = reader.ReadString();
+                    byte[] byteArrayRead = reader.ReadBytes(4);
+                    float floatRead = reader.ReadSingle();
+                    char charRead = reader.ReadChar();
+
+                    Console.Write("int: {0} string: {1} bytes: ", intRead, stringRead);
+                    foreach (byte b in byteArrayRead)
+                        Console.Write("{0} ", b);
+                    Console.Write(" float: {0} char: {1}", floatRead, charRead);
+                }
+            }
+
+            Console.ReadKey();
+
+            
 
 
         }
